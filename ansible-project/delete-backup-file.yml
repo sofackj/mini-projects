@@ -1,0 +1,68 @@
+---
+- name: Control the files deleting process
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    NB_FILES_TO_KEEP: 3
+    DELETE_FILES: false
+    FILE_EXT: "***not defined***"
+  tasks:
+
+  # Find all wanted files
+  - name: "List all files with the extension : {{ FILE_EXT }}"
+    find:
+      # Files path
+      path: "{{ MY_PATH }}"
+      patterns: "*{{ FILE_EXT }}"
+    # Assign the list of files in a variable
+    register: FILES_LIST
+    # Execute the task if both variables are defined
+    when: FILE_EXT != '***not defined***' and MY_PATH is defined
+  
+  # Error message to indicate bad variables assignement
+  - name: Error on the task <Gather files for deletion>
+    fail:
+      msg: "No files were found in the directory {{ MY_PATH }}"
+    # Execute if one of both variables is undefined
+    when: (FILES_LIST.files | length) == 0
+
+  # Display files to delete in the next step
+  - name: Gather files for deletion
+    vars:
+      # List of files from the oldest to the newest
+      SORTED_LIST: "{{ FILES_LIST.files | sort(attribute='ctime') | map(attribute='path') | list }}"
+      # Number of files in SORTED_LIST
+      FILES_TO_DELETE: "{{ SORTED_LIST[:0-(NB_FILES_TO_KEEP | int)] }}"
+    debug:
+      # Display an element of the list
+      msg: "{{ item }}"
+    # Remove the X->[NB_FILES_TO_KEEP] newest files from the list
+    with_items: "{{ FILES_TO_DELETE }}"
+    register: GATHER_FILES
+    # Execute the task if the list exist
+    # and if the total number of files is bigger than the number of files we want to keep
+    when: (SORTED_LIST | length | int) > (NB_FILES_TO_KEEP | int)
+    ignore_errors: true
+
+  # Error message to indicate bad variables assignement
+  - name: Error on the task <Gather files for deletion>
+    fail:
+      msg: "Error on the FILES_LIST assignment : EXT_FILE or MY_PATH not correctly defined"
+    # Execute if one of both variables is undefined
+    when: GATHER_FILES is failed
+
+  # Delete files
+  - name: Delete files
+    file:
+      path: "{{ item.item }}"
+      state: absent
+    with_items: "{{ GATHER_FILES.results }}"
+    # Execute the task if DELETE_FILES is TRUE (FALSE by default)
+    # and if the task 'Gather files for deletion' didn't fail
+    when: (DELETE_FILES | bool) and GATHER_FILES is succeeded
+
+ansible-playbook -i 'localhost,' ansible-test/my-playbook.yml \
+-e MY_PATH='/home/devops/' \
+-e FILE_EXT='' \
+-e NB_FILE_TO_KEEP=1
