@@ -1,0 +1,14 @@
+---
+- name: WHat I need to do
+  hosts: node1
+  roles:
+  - role: deploy_app
+    tags:
+    - check
+
+- name: WHat I need to do
+  hosts: node2
+  roles:
+  - role: deploy_app
+    tags:
+    - todo
