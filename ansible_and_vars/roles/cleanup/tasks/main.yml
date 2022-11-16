@@ -1,6 +1,6 @@
 - name: message to say
   debug:
-    msg: "Hello {{ container-name }}"
+    msg: "Hello {{ container_name }}"
   register: nicu
 
 - name: what is nicu
@@ -10,6 +10,6 @@
 - name: a list of msg
   debug:
     msg: |
-        {{ container-name }}
+        {{ container_name }}
         {{ version }}
         {{ id }}
