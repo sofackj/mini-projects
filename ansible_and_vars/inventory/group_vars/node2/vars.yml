@@ -2,3 +2,6 @@ containers:
 - container_name: httpd
   version: "1.5"
   id: "34567"
+- container_name: nginx
+  version: "2.6"
+  id: "9876"
