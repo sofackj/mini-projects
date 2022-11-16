@@ -1,21 +1,15 @@
 - name: message to say
   debug:
-    msg: "Hello {{ item.container_name }}"
+    msg: "Hello {{ test.container_name }}"
   register: nicu
-  when: item.container_name in LIST_DOCKERS or (LIST_DOCKERS | length | int) == 0
-  with_items: "{{ containers }}"
 
 - name: what is nicu
   debug:
-    msg: "My ID is {{ item.id }}"
-  when: item.container_name in LIST_DOCKERS or (LIST_DOCKERS | length | int) == 0
-  with_items: "{{ containers }}"
+    msg: "My ID is {{ test.id }}"
 
 - name: a list of msg
   debug:
     msg: |
-        {{ item.container_name }}
-        {{ item.version }}
-        {{ item.id }}
-  when: item.container_name in LIST_DOCKERS or (LIST_DOCKERS | length | int) == 0
-  with_items: "{{ containers }}"
+        {{ test.container_name }}
+        {{ test.version }}
+        {{ test.id }}
