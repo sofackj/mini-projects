@@ -2,7 +2,7 @@
 - name: WHat I need to do
   hosts: node1
   roles:
-  - role: cleanup
+  - { role: cleanup, when ACTIVATE_ALL }
 
 - name: WHat I need to do
   hosts: node2
