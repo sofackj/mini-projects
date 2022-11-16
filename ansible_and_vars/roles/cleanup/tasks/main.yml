@@ -2,6 +2,7 @@
   debug:
     msg: "Hello {{ item.container_name }}"
   register: nicu
+  when: item.container_name == "httpd"
   with_items: "{{ containers }}"
 
 - name: what is nicu
@@ -16,4 +17,5 @@
         {{ item.container_name }}
         {{ item.version }}
         {{ item.id }}
+  when: item.container_name in ["httpd", "other"]
   with_items: "{{ containers }}"
