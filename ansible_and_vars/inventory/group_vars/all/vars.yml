@@ -1,2 +1,5 @@
 ---
 ACTIVATE_ALL: False
+LIST_DOCKERS:
+- httpd
+- others

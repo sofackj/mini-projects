@@ -2,13 +2,13 @@
   debug:
     msg: "Hello {{ item.container_name }}"
   register: nicu
-  when: item.container_name == "httpd"
+  when: item.container_name in LIST_DOCKERS
   with_items: "{{ containers }}"
 
 - name: what is nicu
   debug:
     msg: "My ID is {{ item.id }}"
-  when: item.container_name == "httpd"
+  when: item.container_name in LIST_DOCKERS
   with_items: "{{ containers }}"
 
 - name: a list of msg
@@ -17,5 +17,5 @@
         {{ item.container_name }}
         {{ item.version }}
         {{ item.id }}
-  when: item.container_name in ["httpd", "other"]
+  when: item.container_name in LIST_DOCKERS
   with_items: "{{ containers }}"
