@@ -1,8 +1,8 @@
 containers:
-- container_name: httpd
+- container_name: apache
   version: "1.5"
   id: "34567"
-- container_name: nginx
+- container_name: tomcat
   version: "2.6"
   id: "9876"
 - container_name: convertigo
