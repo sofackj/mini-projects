@@ -1,1 +1,1 @@
-- include_task: deploy.yml
+- include_tasks: deploy.yml
