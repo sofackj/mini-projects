@@ -3,7 +3,7 @@
     msg: "Hello {{ item.container_name }}"
   register: nicu
   when: item.container_name in LIST_DOCKERS
-  with_items: containers
+  with_items: "{{ containers }}"
 
 - name: what is nicu
   debug:
