@@ -8,7 +8,7 @@
 - name: what is nicu
   debug:
     msg: "My ID is {{ item.id }}"
-  whwhen: item.container_name in LIST_DOCKERS or (LIST_DOCKERS | length | int) == 0
+  when: item.container_name in LIST_DOCKERS or (LIST_DOCKERS | length | int) == 0
   with_items: "{{ containers }}"
 
 - name: a list of msg
