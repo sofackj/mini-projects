@@ -1,0 +1,10 @@
+---
+- name: WHat I need to do
+  hosts: node1
+  roles:
+  - role: cleanup
+
+- name: WHat I need to do
+  hosts: node2
+  roles:
+  - role: cleanup

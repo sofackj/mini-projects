@@ -1,0 +1,15 @@
+- name: message to say
+  debug:
+    msg: "Hello World"
+  register: nicu
+
+- name: what is nicu
+  debug:
+    var: nicu
+
+- name: a list of msg
+  debug:
+    msg: |
+        Hello me
+        Hello you
+        Hello us
