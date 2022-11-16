@@ -1,1 +1,8 @@
 ---
+containers:
+- container_name: nexus
+  version: "9.6"
+  id: "88887"
+- container_name: arago
+  version: "0.3"
+  id: "112345"
