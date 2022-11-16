@@ -9,7 +9,7 @@
 
 - name: a list of msg
   debug:
-    msg:
-    - "{{ item.container_name }}"
-    - "{{ item.version }}"
-    - "{{ item.id }}"
+    msg: |-
+      {{ item.container_name }}
+      {{ item.version }}
+      {{ item.id }}
