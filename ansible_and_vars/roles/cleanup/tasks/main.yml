@@ -1,18 +1,18 @@
 - name: message to say
   debug:
-    msg: "Hello {{ container_name }}"
+    msg: "Hello {{ item.container_name }}"
   register: nicu
   with_items: "{{ containers }}"
 
 - name: what is nicu
   debug:
-    msg: "My ID is {{ id }}"
+    msg: "My ID is {{ item.id }}"
   with_items: "{{ containers }}"
 
 - name: a list of msg
   debug:
     msg: |
-        {{ container_name }}
-        {{ version }}
-        {{ id }}
+        {{ item.container_name }}
+        {{ item.version }}
+        {{ item.id }}
   with_items: "{{ containers }}"
