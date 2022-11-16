@@ -1,2 +1,2 @@
 ---
-LIST_DOCKERS: ["httpd", "nginx"]
+LIST_DOCKERS: ["apache", "tomcat"]
