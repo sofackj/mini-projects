@@ -1,2 +1,2 @@
 ---
-LIST_DOCKERS: ["httpd", "ngnix"]
+LIST_DOCKERS: ["httpd", "nginx"]
