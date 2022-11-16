@@ -2,10 +2,12 @@
   debug:
     msg: "Hello {{ container_name }}"
   register: nicu
+  with_items: "{{ containers }}"
 
 - name: what is nicu
   debug:
     msg: "My ID is {{ id }}"
+  with_items: "{{ containers }}"
 
 - name: a list of msg
   debug:
@@ -13,3 +15,4 @@
         {{ container_name }}
         {{ version }}
         {{ id }}
+  with_items: "{{ containers }}"
