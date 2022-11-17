@@ -1,6 +1,6 @@
 # Some Mini-Projects during our long Devops Journey
 
-## Ansible Project I : May be used for docker containers <directory>
+## Ansible Project I : May be used for docker containers **```ansible_and_vars```**
 
 ### What you will see
 
@@ -15,12 +15,18 @@
 
 - Clone the repository
 
-<git clone https://github.com/sofackj/mini-projects.git>
+```sh
+git clone https://github.com/sofackj/mini-projects.git
+```
   
 - Every connection is local so start the playbook with this command
-  
-<ansible-playbook mini-projects/ansible_and_vars/my-playbook.yml>
-  
+
+```sh
+ansible-playbook mini-projects/ansible_and_vars/my-playbook.yml
+```
+
 - Tags can be used as <todo> and <check>
 
-<ansible-playbook mini-projects/ansible_and_vars/my-playbook.yml --tags todo>
+```sh
+ansible-playbook mini-projects/ansible_and_vars/my-playbook.yml --tags todo
+```
