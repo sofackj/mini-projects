@@ -9,6 +9,7 @@
   - include_tasks
   - with_items
   - when
+- Use of loop_control to add a local loop to an extern loop
 - Use of tags to filter our tasks
   
 ### Where to go
