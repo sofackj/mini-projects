@@ -5,7 +5,8 @@
 
 - name: what is nicu
   debug:
-    msg: "My ID is {{ item.id }}"
+    msg: "My ID is {{ item.id }} on {{ item }}"
+  with_item: "{{ my_list }}"
 
 - name: a list of msg
   debug:

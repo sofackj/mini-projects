@@ -1,4 +1,5 @@
 ---
+my_list: ["A","B","C"]
 containers:
 - container_name: nexus
   version: "9.6"
