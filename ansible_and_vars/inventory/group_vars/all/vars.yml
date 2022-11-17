@@ -1,2 +1,3 @@
 ---
+ACTIVATE: False
 LIST_DOCKERS: ["apache", "tomcat"]
