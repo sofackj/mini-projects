@@ -1,3 +1,4 @@
 ---
 ACTIVATE: False
 LIST_DOCKERS: ["apache", "tomcat"]
+my_list: ["A","B","C"]
