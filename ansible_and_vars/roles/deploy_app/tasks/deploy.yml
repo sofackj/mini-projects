@@ -1,0 +1,15 @@
+- name: message to say
+  debug:
+    msg: "Hello {{ item.container_name }}"
+  register: nicu
+
+- name: what is nicu
+  debug:
+    msg: "My ID is {{ item.id }}"
+
+- name: a list of msg
+  debug:
+    msg:
+    - "{{ item.container_name }}"
+    - "{{ item.version }}"
+    - "{{ item.id }}"
