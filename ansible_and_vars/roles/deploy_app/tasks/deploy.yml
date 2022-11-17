@@ -5,7 +5,10 @@
 
 - name: what is nicu
   debug:
-    msg: "My ID is {{ item.id }}"
+    msg: "My ID is {{ item.id }} for {{ local_item }}"
+  loop: "{{ my_list }}"
+  loop_control:
+    loop_var: local_item
 
 - name: a list of msg
   debug:
